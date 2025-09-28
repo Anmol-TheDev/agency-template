@@ -1,0 +1,88 @@
+---
+import { Image } from "astro:assets";
+import Container from "../shared/Container.astro";
+import Paragraph from "../shared/Paragraph.astro";
+import Title from "../shared/Title.astro";
+
+import myImage from "../../assets/images/dev-with-c-1.webp";
+import GradiantText from "../shared/GradiantText.astro";
+
+type FeatureProps = {
+  title: string;
+  description: string;
+};
+const features = [
+  {
+    title: "Vulcanizing Machines",
+    description: "Portable, lightweight, and high-strength for easy transportation and quick assembly.",
+  },
+  {
+    title: "Conveyor Belts",
+    description: "Fabric and steel cord belts with high adhesion, impact resistance, and flexibility.",
+  },
+  {
+    title: "Rollers",
+    description: "Carrying, impact, rubber lagged, HDPE, self-cleaning, and flat return rollers.",
+  },
+  {
+    title: "Idlers",
+    description: "Return bracket, flat return bracket, galvanized, and self-aligning idlers.",
+  },
+  {
+    title: "Pulley Lagging",
+    description: "Prevents belt slippage and reduces wear for increased belt life.",
+  },
+  {
+    title: "Hydraulic Components",
+    description: "Including cross beams, electronic control units, pumps, and hoses.",
+  },
+  {
+    title: "Vulcanizing Solutions",
+    description: "Hot and cold solutions for various rubber and metal bonding purposes.",
+  },
+  {
+    title: "Lagging Sheets",
+    description: "Plain, diamond grooved, and ceramic sheets for various applications.",
+  },
+  {
+    title: "Frog Clamps",
+    description: "Belt vises for maintenance and repair.",
+  },
+];
+
+export interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<section id="features" class=`${className}`>
+  <Container className="">
+    <div class="text-center max-w-3xl mx-auto">
+      <Title>
+        Our <GradiantText>Product  Range</GradiantText>
+      </Title>
+    </div>
+    <div class="flex flex-row flex-wrap mt-8">
+      <!-- <div class="flex flex-col lg:gap-10 lg:gap-12 midmd:flex-row mt-8"> -->
+      <!-- <div class="flex  lg:w-1/2 flex-row"> -->
+      {
+        features.map((feature: FeatureProps) => {
+          return (
+            <div class="flex flex-col text-heading-3 font-medium basis-full md:basis-1/2 lg:basis-1/3 p-4">
+              <div class="flex items-center">
+                <span class="font-bold rounded-full w-8 h-8 mr-3 text-primary inline-flex justify-center items-center">
+                  &checkmark;
+                </span>
+                <h3 class="text-lg font-semibold">{feature.title}</h3>
+              </div>
+              <p class="text-sm text-heading-3 pl-11">{feature.description}</p>
+            </div>
+          );
+        })
+      }
+      <!-- </div> -->
+    </div>
+  </Container>
+</section>
